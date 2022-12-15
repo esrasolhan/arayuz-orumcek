@@ -1,0 +1,32 @@
+from tkinter import *
+import os
+dataFile = "dataURL.txt"
+pencere = Tk()
+pencere.title("MİNİ ÖRÜMCEK")
+
+baslik = Label(pencere, text="MİNİ ÖRÜMCEĞE HOŞGELDİNİZ!")
+def dataWrite(self):
+        dataOpen = open(self.dataFile, 'a')
+        siteURL = input("Site adresini ön eki ile birlikte giriniz: ")
+        kontrol7 = siteURL[:7]  # http
+        kontrol8 = siteURL[:8]  # https
+        http = "http://"
+        https = "https://"
+        if kontrol7 == http or kontrol8 == https:
+            dataOpen.write(siteURL + "\n")
+            dataOpen.close()
+            print("Url kaydedildi.")
+        else:
+            print("Lütfen url'nin ön ekini (/'https://' veya 'http://') giriniz.")
+
+buton1 = Button(pencere, text=" Menüye gitmek için tıklayınız... ", fg="red", bg="green", command= dataWrite().pack())
+buton1.grid(row=3, column=0, padx=50, pady=10)
+buton3 = Button(pencere, text=" Çıkış ", fg="black", bg="red", command=pencere.quit)
+
+baslik.grid(row=0, columnspan=2, padx=50, pady=25)
+baslik.config(font=("Times New Roman", 30))
+buton3.grid(row=3, column=1, padx=50, pady=10)
+
+pencere.mainloop()
+buton1.mainloop()
+buton3.mainloop()
